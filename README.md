@@ -5,6 +5,7 @@ This is Java code for a simple API that displays a greeting.
 ---
 
 You'll perform several tasks when working with this code:
+
 * clone the code locally using Git via the command line
 
 * import the code to the Java IDE
