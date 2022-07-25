@@ -14,7 +14,7 @@ public class GoodbyeController {
 
     @GetMapping("/goodbye")
     //test this via http://localhost:8080/goodbye and http://localhost:8080/goodbye?name=Kesha
-    public String goodbye(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return new Goodbye(counter.incrementAndGet(), String.format(template, name)).toString();
+    public Goodbye goodbye(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return new Goodbye(counter.incrementAndGet(), String.format(template, name));
     }
 }

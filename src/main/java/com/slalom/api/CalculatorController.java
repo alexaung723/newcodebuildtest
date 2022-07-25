@@ -14,9 +14,14 @@ public class CalculatorController {
     private final AtomicLong counter = new AtomicLong();
 
     int x1 = 0, x2 = 0;
+
+//    @GetMapping("/calculator")
+//    public String result(@RequestParam(value = "number1" , defaultValue = "0") int x1, @RequestParam(value = "number2" , defaultValue = "0") int x2){
+//        return "The total is: " + String.valueOf(x1+x2) + ".";
+//    }
     @GetMapping("/calculator")
-    public String result(@RequestParam(value = "number1" , defaultValue = "0") int x1, @RequestParam(value = "number2" , defaultValue = "0") int x2){
-        return "The total is: " + String.valueOf(x1+x2) + ".";
+    public Calculation calculation(@RequestParam(value = "number1" , defaultValue = "0") int x1, @RequestParam(value = "number2" , defaultValue = "0") int x2) {
+        return new Calculation(counter.incrementAndGet(), x1+x2);
     }
 
 }
