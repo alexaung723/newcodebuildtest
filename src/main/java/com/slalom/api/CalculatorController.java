@@ -16,8 +16,7 @@ public class CalculatorController {
     int x1 = 0, x2 = 0;
     @GetMapping("/calculator")
     public String result(@RequestParam(value = "number1" , defaultValue = "0") int x1, @RequestParam(value = "number2" , defaultValue = "0") int x2){
-        return String.valueOf(x1+x2);
+        return "The total is: " + String.valueOf(x1+x2) + ".";
     }
-
 
 }

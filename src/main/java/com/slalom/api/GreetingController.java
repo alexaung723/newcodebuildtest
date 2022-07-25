@@ -14,7 +14,9 @@ public class GreetingController {
 
     @GetMapping("/greeting")
     //test this via http://localhost:8080/greeting and http://localhost:8080/greeting?name=Kesha
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    public String greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, name)).toString();
     }
+
+
 }
