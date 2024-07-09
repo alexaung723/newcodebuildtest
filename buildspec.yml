@@ -1,13 +1,32 @@
+# version: 0.2
+# phases:
+#   build:
+#     commands:
+#       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+#       - cd src && make package S3_BUCKET=$S3_ARTIFACT_BUCKET S3_PREFIX="packaged/commit-$COMMIT_HASH"
+# artifacts:
+#   base-directory: src
+#   files:
+#   - resources.params.dev.json
+#   - resources.params.uat.json
+#   - resources.params.prod.json
+#   - resources.out.yml
 version: 0.2
+
 phases:
+  install:
+    runtime-versions:
+      python: 3.8
+  pre_build:
+    commands:
+      - echo Pre-build phase
   build:
     commands:
-      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - cd src && make package S3_BUCKET=$S3_ARTIFACT_BUCKET S3_PREFIX="packaged/commit-$COMMIT_HASH"
+      - echo Build phase
+  post_build:
+    commands:
+      - echo Post-build phase
+
 artifacts:
-  base-directory: src
   files:
-  - resources.params.dev.json
-  - resources.params.uat.json
-  - resources.params.prod.json
-  - resources.out.yml
+    - '**/*'
